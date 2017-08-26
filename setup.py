@@ -8,7 +8,7 @@ setup(
     url = "https://github.com/salexkidd/django_malice/",
     description='A simple Django app that enables own occuring error.',
     keywords = ["django", "testing",],
-    version='0.1.1',
+    version='0.1.3',
     packages=['malice'],
     classifiers=[
         'Development Status :: 4 - Beta',
