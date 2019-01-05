@@ -1,5 +1,9 @@
 from django.test import TestCase, Client
-from django.core.urlresolvers import reverse
+
+try:
+    from django.urls import reverse
+except:
+    from django.core.urlresolvers import reverse
 
 
 class MaliceTest(TestCase):

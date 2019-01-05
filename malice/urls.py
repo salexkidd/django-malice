@@ -1,7 +1,12 @@
-from django.conf.urls import url
+try:
+    from django.urls import url, include
+except:
+    from django.conf.urls import url, include
 
 from . import views as malice_views
 
+
+app_name = 'malice'
 
 urlpatterns = [
 

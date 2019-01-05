@@ -9,7 +9,8 @@ machine:
 
 dependencies:
   override:
-    - pip install -U pip setuptools tox
+    - pip install -U pip setuptools tox tox-pyenv
+    - pyenv local 3.6.1, 3.7.1
     - tox --notes
 
 test:
