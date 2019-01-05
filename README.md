@@ -1,7 +1,5 @@
 # django-malice
 
-[![CircleCI](https://circleci.com/gh/salexkidd/django-malice/tree/develop.svg?style=svg)](https://circleci.com/gh/salexkidd/django-malice/tree/develop)
-
 django-malice is a simple Django app that provides an easy and simple View Error(403, 404, 500) and 200 OK Testing for develop and production environment.
 
 # Feature
