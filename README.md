@@ -1,12 +1,12 @@
 # django-malice
 
-django-malice is a simple Django app that provides an easy and simple View Error(403, 404, 500) and 200 OK Testing for develop and production environment.
+django-malice is a simple Django app that provides an easy and simple View Error(403, 404, 500) and 200 OK Testing for development and production environment.
 
 # Feature
 - It can cause an 403, 404, 500 error.
 
 # Dependencies
-- python 3
+- python 3.6, 3.7
 - django >= 1.11
 
 # Quick start
@@ -26,10 +26,41 @@ INSTALLED_APPS = [
 ]
 ```
 
-3. Include the malice URLconf in your project urls.py like this:
+And you want gets some malice's errors by not admin user, please set "MALICE_ADMIN_ONLY" is False
+
+```
+MALICE_ADMIN_ONLY = False
+```
+
+
+1. Include the malice URLconf in your project urls.py like this:
 
 ```
 url(r'^malice/', include('malice.urls', namespace='malice')),
+
+# or (django 2.0)
+
+path('malice/', include('malice.urls', namespace='malice')),
+
+```
+
+If you don't want production envirionment, like this.
+
+```
+from django.conf import settings
+
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^malice/', include('malice.urls', namespace='malice'))
+    ]
+
+# or (django 2.0)
+
+if settings.DEBUG:
+    urlpatterns += [
+        path('malice/', include('malice.urls', namespace='malice'))
+    ]
+
 ```
 
 4. Run runserver and open below url
@@ -42,3 +73,4 @@ url(r'^malice/', include('malice.urls', namespace='malice')),
 -  http://localhost:8000/malice/404
 -  http://localhost:8000/malice/403
 -  http://localhost:8000/malice/500
+

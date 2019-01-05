@@ -23,26 +23,47 @@ THE SOFTWARE.
 """
 
 from django.views import View
+from django.conf import settings
 from django.http import HttpResponse, Http404
-
 from django.core.exceptions import PermissionDenied as _PermissionDenied
 
 
+def if_admin_only(func):
+
+    def wrapper(self, request, *args, **kwargs):
+
+        if getattr(settings, "MALICE_ADMIN_ONLY", True):
+            if not request.user.is_superuser:
+                raise Http404
+
+        return func(request, *args, **kwargs)
+
+    return wrapper
+
+
 class OK(View):
+
+    @if_admin_only
     def get(self, *args, **kwargs):
         return HttpResponse("I'm OK", status=200)
 
 
 class PermissionDenied(View):
+
+    @if_admin_only
     def get(self, *args, **kwargs):
         raise _PermissionDenied("It is Error with a malicious! (403 Forbidden)")
 
 
 class NotFound(View):
+
+    @if_admin_only
     def get(self, *args, **kwargs):
         raise Http404("It is Error with a malicious! (404 Not Found)")
 
 
 class InternalServerError(View):
+
+    @if_admin_only
     def get(self, *args, **kwargs):
         raise ValueError("It is Error with a malicious! (500 Internal Server Error)")
