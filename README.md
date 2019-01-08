@@ -7,6 +7,14 @@ django-malice is a simple Django app that provides an easy and simple View Error
 # Feature
 - It can cause an 403, 404, 500 error.
 
+# Motivation
+
+How do you check error with sentry.io or other error collecting service?
+
+Maybe your django project don't report issue to error collecting service.
+
+You can cause an error by django-malice and check collection service behavior.
+
 # Dependencies
 - python 3.6, 3.7
 - django >= 1.11
