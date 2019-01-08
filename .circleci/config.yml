@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: python:3
+
+    steps:
+      - checkout
+      - run: apt-get update
+      - run: pip install -U pip setuptools tox
+      - run: tox --recreate
