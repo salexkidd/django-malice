@@ -17,7 +17,7 @@ You can cause an error by django-malice and check collection service behavior.
 
 # Dependencies
 - python 3.6, 3.7
-- django >= 1.11
+- django >= 1.11 (Support 2.0)
 
 # Quick start
 
